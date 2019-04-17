@@ -26,12 +26,12 @@ public class Exercise4 {
 
         } catch (ParseException ex) {
             System.err.println(ex.getMessage());
-        } catch (DateException ex) {
+        } catch (IllegalArgumentException ex) {
             System.err.println(ex.getMessage());
         }
     }
 
-    private static Date parseDate(String date,  String datePattern) throws ParseException {
+    private static Date parseDate(String date, String datePattern) throws ParseException {
         try {
             SimpleDateFormat format = new SimpleDateFormat(datePattern);
             return format.parse(date);
@@ -41,9 +41,9 @@ public class Exercise4 {
         }
     }
 
-    private static void validateDateRange(Date startDate, Date endDate) throws DateException {
+    private static void validateDateRange(Date startDate, Date endDate) throws IllegalArgumentException {
         if (startDate.compareTo(endDate) == 1) {
-            throw new DateException("start date cannot be less than end date");
+            throw new IllegalArgumentException("start date cannot be less than end date!");
         }
     }
 
